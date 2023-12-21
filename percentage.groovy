@@ -68,5 +68,3 @@ def completedPercentage() {
         sleep(1000)
     }
 }
-
-completedPercentage()
