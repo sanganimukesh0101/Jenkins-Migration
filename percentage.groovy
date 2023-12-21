@@ -1,3 +1,16 @@
+def completedPercentage() {
+    while (true) {
+        def percentage
+        def sourceKeys = total_keys("192.168.205.6", 7001, false)
+        def destinationKeys = total_keys("192.168.205.7", 8001, true)
+
+            percentage = destinationKeys * 100 / sourceKeys
+            println("$percentage%")
+        
+        sleep(1000)
+    }
+}
+
 def total_keys_in_each_master(masterIp, masterPort) {
     def keys = 0
     def subcommand = "redis-cli -h $masterIp -p $masterPort info keyspace"
@@ -56,15 +69,4 @@ def total_keys(Ip, Port, cluster) {
     return totalKeys
 }
 
-def completedPercentage() {
-    while (true) {
-        def percentage
-        def sourceKeys = total_keys("192.168.205.6", 7001, false)
-        def destinationKeys = total_keys("192.168.205.7", 8001, true)
 
-            percentage = destinationKeys * 100 / sourceKeys
-            println("$percentage%")
-        
-        sleep(1000)
-    }
-}
